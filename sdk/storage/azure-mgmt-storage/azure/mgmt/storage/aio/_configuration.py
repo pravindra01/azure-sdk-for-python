@@ -44,9 +44,7 @@ class StorageManagementClientConfiguration:
 
         self.credential = credential
         self.subscription_id = subscription_id
-        if 'base_url' in kwargs:
-            self.base_url = kwargs.pop('base_url')
-        self.credential_scopes = kwargs.pop('credential_scopes', [self.base_url])
+        self.credential_scopes = kwargs.pop('credential_scopes', ['https://management.azure.com/.default'])
         kwargs.setdefault('sdk_moniker', 'azure-mgmt-storage/{}'.format(VERSION))
         self.polling_interval = kwargs.get("polling_interval", 30)
         self._configure(**kwargs)
